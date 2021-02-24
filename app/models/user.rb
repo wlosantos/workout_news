@@ -14,4 +14,6 @@ class User < ApplicationRecord
   validates :name, :username, presence: true
   validates :username, uniqueness: true
 
+  # TODO: Adicionar method para retirar espaços do username
+
 end

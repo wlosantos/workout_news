@@ -1,0 +1,11 @@
+.devise__wrapper
+  .devise_container
+    .devise_anuncio
+      = image_tag(url_for('https://picsum.photos/800/800/?blur=2'), class: 'devise-back')
+    .devise_form
+
+      %p
+        Hello #{@resource.email}!
+      %p Your account has been locked due to an excessive number of unsuccessful sign in attempts.
+      %p Click the link below to unlock your account:
+      %p= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token)

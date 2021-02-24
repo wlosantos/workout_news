@@ -1,0 +1,17 @@
+.devise__wrapper
+  .devise_container
+    .devise_anuncio
+      = image_tag(url_for('https://picsum.photos/800/800/?blur=2'), class: 'devise-back')
+    .devise_form
+      %h2.title.is-4 Reenviar instruções de confirmação
+
+      = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .field
+          = f.label :email, class: 'label'
+          .control
+            = f.email_field :email, class: 'input', autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
+        .actions.has-text-centered
+          = f.submit "Resend confirmation instructions"
+      .shared_links
+        = render "devise/shared/links"

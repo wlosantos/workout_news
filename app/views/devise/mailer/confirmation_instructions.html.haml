@@ -1,0 +1,9 @@
+.devise__wrapper
+  .devise_container
+    .devise_anuncio
+      = image_tag(url_for('https://picsum.photos/800/800/?blur=2'), class: 'devise-back')
+    .devise_form
+      %h2.title.is-4 Welcome #{@email}!
+
+      %p You can confirm your account email through the link below:
+      = link_to 'Confirmar minha conta', confirmation_url(@resource, confirmation_token: @token)

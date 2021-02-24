@@ -1,0 +1,21 @@
+.devise__wrapper
+  .devise_container
+    .devise_anuncio
+      = image_tag(url_for('https://picsum.photos/800/800/?blur=2'), class: 'devise-back')
+    .devise_form
+      %h2.title.is-4 Login
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .field
+          .control
+            = f.email_field :email, class: 'input', autofocus: true, autocomplete: "email", placeholder: 'seu email'
+        .field
+          .control
+            = f.password_field :password, class: 'input', autocomplete: "current-password", placeholder: 'digite sua senha'
+        - if devise_mapping.rememberable?
+          .field
+            = f.check_box :remember_me
+            = f.label :remember_me
+        .actions.has-text-centered
+          = f.submit class: 'button is-info'
+      .shared_links
+        = render "devise/shared/links"

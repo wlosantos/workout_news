@@ -12,8 +12,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'haml'
 gem 'haml-rails'
 gem 'devise'
-#gem 'devise-i18n', '~> 1.9', '>= 1.9.2'
-# gem 'rails-i18n'
+gem 'devise-i18n', '~> 1.9', '>= 1.9.2'
+gem 'rails-i18n'
 
 # gem "acts-as-taggable-on", "~> 7.0"
 # gem "active_storage_validations", "~> 0.9.2"

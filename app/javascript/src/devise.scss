@@ -1,0 +1,41 @@
+.devise__wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+
+  .devise_container {
+    margin-top: 150px;
+    border-radius: 10px;
+    border: 1px solid $linkcolor;
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+
+    .devise_anuncio{
+      flex: 1;
+      background: $linkcolorDark;
+      border-radius: 10px 0 0 10px;
+      position: relative;
+
+      .devise-back {
+        object-fit: cover;
+        height: 100%;
+        border-radius: 10px 0 0 10px;
+      }
+    }
+    .devise_form{
+      flex: 1;
+      padding: 2rem;
+
+      .shared_links {
+        text-align: center;
+        font-size: .9rem;
+        padding-top: 1rem;
+
+        a {
+          color: $linkcolor;
+        }
+      }
+    }
+  }
+}

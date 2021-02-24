@@ -1,0 +1,35 @@
+'pt-BR':
+  activerecord:
+    model:
+      user: 'Usuário'
+      comment: 'Comentário'
+      streaming: 'Video'
+
+    attributes:
+      default: &default
+        created_at: 'Criado em'
+        updated_at: 'Atualizado em'
+        published: 'Publicado em'
+
+      user:
+        <<: *default
+        name: 'Nome'
+        email: 'Email'
+        kind: 'Tipo'
+        password: 'Senha'
+        password_confirmation: 'Senha (confirmação)'
+
+      post:
+        <<: *default
+        title: 'Título'
+        body: 'Descrição'
+        contrast: 'Destaque'
+
+      streaming:
+        <<: *default
+        title: 'Título'
+        description: 'Descrição'
+
+      comment:
+        <<: *default
+        commenter: 'Comentário'
