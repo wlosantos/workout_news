@@ -1,0 +1,20 @@
+html, body {
+  background-color: #fafafa;
+}
+
+.main_wrapper {
+  margin-top: 2px;
+  display: flex;
+
+  main {
+    flex: 1;
+    background-color: #fff;
+    min-height: 800px;
+    padding: 1rem;
+  }
+
+  aside {
+    width: 220px;
+    margin-left: 2px;
+  }
+}

@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :post do
-    title { "MyString" }
-    body { "MyText" }
-    published { 1 }
-    contrast { 1 }
-    user { nil }
+    title { Faker::Lorem.sentence }
+    body { Faker::Lorem.paragraph(sentence_count: 15, supplemental: true) }
+    published { [:pending, :published].sample }
+    contrast { 0 }
+    created_by { User.first }
   end
 end

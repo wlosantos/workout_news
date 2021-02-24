@@ -1,0 +1,25 @@
+.main_wrapper
+  %main
+    .content_main
+      - @posts.each do |post|
+        .post_content
+          .post_image
+            = link_to post do
+              %figure.img_post
+                = image_tag('https://picsum.photos/400', class: 'config-image')
+          .post_description
+            .post_title
+              %h4 #{ post.title }
+              %small
+                #{ l post.created_at, format: :short }
+            .post_body
+              %p.mb-3 #{ truncate(strip_tags(post.body.to_s), length: 180) }
+            .post_footer.has-text-right
+              .post_tags
+                -# - if post.tag_list.any?
+                  .tag_detail
+                    %strong Tags:
+                  #{ raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') }
+
+  %aside
+    sidebar
