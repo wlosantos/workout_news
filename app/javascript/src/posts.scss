@@ -1,0 +1,69 @@
+.content_main {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-gap: 15px;
+
+  .post_content {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    position: relative;
+
+    .img_post {
+      height: 126px;
+      overflow: hidden;
+      background: #eee;
+
+      img .config-image {
+        height: auto;
+      }
+    }
+
+    .post_description {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 250px;
+
+      .post_title {
+        margin-bottom: 10px;
+        line-height: 1rem;
+        color: $linkcolor;
+
+        small {
+          font-size: .7rem;
+          color: $color-grey;
+        }
+      }
+
+      .post_body {
+        flex: 1;
+        font-size: .8rem;
+        color: $color-grey;
+      }
+
+      .post_tags {
+        font-size: .7rem;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .post_footer {
+      }
+    }
+  }
+}
+
+.content_container {
+  display: flex;
+
+  .content_form {
+    flex: 1;
+  }
+  .aside_profile {
+    width: 280px;
+    margin-left: 2rem
+  }
+}
