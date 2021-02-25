@@ -76,3 +76,30 @@
     margin-left: 2rem
   }
 }
+
+.show_container {
+
+  .show_description {
+
+    .banner_image_show {
+      margin-top: 5px;
+      margin-bottom: 2rem;
+      max-height: 350px;
+      overflow: hidden;
+
+      .adjust_image {
+        object-fit: cover;
+      }
+    }
+
+    .post_author {
+      margin-top: 2rem;
+      text-align: right;
+      font-size: .9rem;
+
+      span {
+        font-size: .8rem;
+      }
+    }
+  }
+}

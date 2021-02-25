@@ -1,2 +1,20 @@
-%h1 Posts#show
-%p Find me in app/views/posts/show.html.haml
+.main_wrapper
+  %main
+    .show_container
+      .show_title.mt-4
+        %h1.title.is-4.mb-0 #{ @post.title }
+        %small.has-text-grey published: #{ l @post.created_at, format: :short }
+
+      .show_description
+        .banner_image_show
+          #{ get_image(@post) }
+
+        .content_post_show
+          %p #{ @post.body }
+          .post_author
+            %div
+              %span criado por
+            .author_user
+              = render 'shared/user_avatar', user: @post
+          %hr
+  %aside
