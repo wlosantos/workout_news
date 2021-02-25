@@ -56,6 +56,15 @@
   }
 }
 
+.pages-content {
+  display: flex;
+  justify-content: center;
+
+  div {
+    width: 330px;
+  }
+}
+
 .content_container {
   display: flex;
 

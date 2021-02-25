@@ -1,1 +1,3 @@
-FactoryBot.create(:post)
+100.times do
+  FactoryBot.create(:post)
+end
