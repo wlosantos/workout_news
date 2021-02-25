@@ -1,2 +1,7 @@
-%h1 Posts#new
-%p Find me in app/views/posts/new.html.haml
+.main_wrapper
+  %main
+    .content_container
+
+      = render 'form', post: @post
+
+      .aside_profile

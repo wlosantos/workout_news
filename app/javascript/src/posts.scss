@@ -7,6 +7,7 @@
   .post_content {
     background-color: #fff;
     border: 1px solid #eee;
+    border-radius: 4px;
     position: relative;
 
     .img_post {
@@ -29,6 +30,7 @@
       .post_title {
         margin-bottom: 10px;
         line-height: 1rem;
+        color: $linkcolor;
 
         small {
           font-size: .7rem;
@@ -51,5 +53,17 @@
       .post_footer {
       }
     }
+  }
+}
+
+.content_container {
+  display: flex;
+
+  .content_form {
+    flex: 1;
+  }
+  .aside_profile {
+    width: 280px;
+    margin-left: 2rem
   }
 }

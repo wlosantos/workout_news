@@ -3,6 +3,11 @@ class Post < ApplicationRecord
   belongs_to :created_by, class_name: 'User'
   has_many :comments, as: :commentable, dependent: :destroy
 
+  has_one_attached :image
+  has_rich_text :body
+
+  acts_as_taggable_on :tags
+
   enum published: [ :pending, :published ]
 
   validates :title, :body, presence: true

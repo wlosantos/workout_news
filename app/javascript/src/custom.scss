@@ -1,3 +1,17 @@
+@import "trix/dist/trix";
+
+.trix-button-group.trix-button-group--block-tools,
+.trix-button-group.trix-button-group--file-tools,
+.trix-button-group.trix-button-group--history-tools {
+  display: none;
+}
+
+trix-editor {
+  &.form-control {
+    min-height: 20rem;
+    height: auto;
+  }
+}
 html, body {
   background-color: #fafafa;
 }
