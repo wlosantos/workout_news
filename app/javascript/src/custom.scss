@@ -51,7 +51,10 @@ html, body {
   }
 
   .user_name {
-    font-size: 1rem;
-    font-weight: 500;
+    line-height: .9rem;
+
+    div {
+      font-weight: 600;
+    }
   }
 }

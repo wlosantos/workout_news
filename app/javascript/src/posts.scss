@@ -111,8 +111,15 @@
   }
 
   .comment-list {
-    background: #eee;
+    background: #fafafa;
     font-size: .8rem;
+    padding: 10px;
+
+    .detail_comments {
+      padding: 15px;
+      margin: 0 2rem 1rem 2rem;
+      border-bottom: 1px solid #eee;
+    }
   }
 
 }
