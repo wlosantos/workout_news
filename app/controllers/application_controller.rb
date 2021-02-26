@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit :sign_up, keys: %i[ name username kind status ]
-    devise_parameter_sanitizer.permit :account_update, keys: %i[ name ]
+    devise_parameter_sanitizer.permit :account_update, keys: %i[ name avatar ]
   end
 
 end
