@@ -58,10 +58,10 @@ html, body {
   align-items: center;
 
   .user_name {
+    flex: 1;
     line-height: .9rem;
-
     div {
-      font-weight: 600;
+      font-weight: 500;
     }
   }
 }
@@ -83,16 +83,16 @@ html, body {
     position: relative;
 
     .user_image {
-      padding: 10px;
+      padding: 10px 0 5px 5px;
     }
 
     .detail_name {
       flex: 1;
-      padding: 10px;
+      padding: 10px 5px 5px 5px;
 
       div {
-        font-size: .9rem;
-        font-weight: 600;
+        font-size: .8rem;
+        font-weight: 500;
         line-height: 14px;
       }
       .detail_username {
@@ -104,16 +104,12 @@ html, body {
         }
       }
     }
-
-    .detail_user_follow {
-      font-size: .8rem;
-      background-color: $color-grey;
-      color: #fff;
-      padding: 0 10px;
-      border-radius: 0 5px 5px 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+  }
+  .detail_user_follow {
+    font-size: .8rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
