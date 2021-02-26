@@ -1,0 +1,15 @@
+.profile_wrapper.pb-2
+  .user_detail
+    .user_image
+      = get_avatar(profile)
+    .detail_name
+      %div.has-text-grey
+        #{ profile.name }
+      .detail_username
+        = link_to '#' do
+          #{ profile.username }
+  - if current_user != profile
+    .detail_user_follow
+      = link_to '#', class: 'button is-success is-small is-rounded' do
+        %i.fas.fa-check.mr-2
+        Seguir

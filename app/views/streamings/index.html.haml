@@ -1,0 +1,28 @@
+.main_wrapper
+  %main
+    .content_video
+      - @streamings.each do |streaming|
+        .video_wrapper
+          .video_thumbnail
+            = link_to streaming do
+              = get_tumbnail(streaming)
+          .video_description
+            .avatar
+              = get_avatar(streaming.created_by)
+            %div
+              .video_title
+                = truncate streaming.title, length: 50
+              .video_author
+                = streaming.created_by.name
+              .video_published
+                = time_ago_in_words streaming.created_at
+
+    .pages-content
+      %div
+        = paginate @streamings
+
+  -# %aside
+    .post_sidebar
+      - if current_user.kind == 'admin'
+        = render 'users/user_profile', profile: current_user
+      -# = render 'shared/tags'

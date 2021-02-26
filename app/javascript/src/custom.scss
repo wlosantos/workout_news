@@ -1,0 +1,115 @@
+@import "trix/dist/trix";
+
+// .trix-button-group.trix-button-group--block-tools,
+.trix-button-group.trix-button-group--file-tools,
+.trix-button-group.trix-button-group--history-tools {
+  display: none;
+}
+
+trix-editor {
+  &.form-control {
+    min-height: 20rem;
+    height: auto;
+  }
+}
+
+.trix-content h1 {
+  font-weight: 600;
+}
+
+html, body {
+  background-color: #fafafa;
+}
+
+.main_wrapper {
+  margin-top: 2px;
+  display: flex;
+
+  main {
+    flex: 1;
+    background-color: #fff;
+    min-height: 800px;
+    padding: 1rem;
+  }
+
+  aside {
+    width: 220px;
+    margin-left: 2px;
+  }
+}
+
+.avatar {
+  color: $color-info;
+  font-size: .9rem;
+}
+
+.profile {
+  img {
+    width: 28px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+}
+
+.detail_user {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  .user_name {
+    flex: 1;
+    line-height: .9rem;
+    div {
+      font-weight: 500;
+    }
+  }
+}
+
+.photo {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.profile_wrapper {
+  background-color: #fff;
+
+  .user_detail {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    position: relative;
+
+    .user_image {
+      padding: 10px 0 5px 5px;
+    }
+
+    .detail_name {
+      flex: 1;
+      padding: 10px 5px 5px 5px;
+
+      div {
+        font-size: .8rem;
+        font-weight: 500;
+        line-height: 14px;
+      }
+      .detail_username {
+        color: #717171;
+        font-size: .8rem;
+        font-weight: 300;
+        &::before{
+          content: '@'
+        }
+      }
+    }
+  }
+  .detail_user_follow {
+    font-size: .8rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

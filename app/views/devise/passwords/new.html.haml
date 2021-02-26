@@ -1,0 +1,16 @@
+.devise__wrapper
+  .devise_container
+    .devise_anuncio
+      = image_tag(url_for('https://picsum.photos/800/800/?blur=2'), class: 'devise-back')
+    .devise_form
+      %h2.title.is-4 Esqueceu sua senha?
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .field
+          = f.label :email, class: 'label'
+          .control
+            = f.email_field :email, class: 'input', autofocus: true, autocomplete: "email"
+        .actions
+          = f.submit "Envie-me instruções de redefinição de senha"
+      .shared_links.is-flex.is-justify-content-space-around
+        = render "devise/shared/links"

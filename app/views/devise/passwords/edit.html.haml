@@ -1,0 +1,21 @@
+.devise__wrapper
+  .devise_container
+    .devise_anuncio
+      = image_tag(url_for('https://picsum.photos/800/800/?blur=2'), class: 'devise-back')
+    .devise_form
+      %h2.title.is-4 Trocar sua senha?
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+        -# = render "devise/shared/error_messages", resource: resource
+        = f.hidden_field :reset_password_token
+        .field
+          = f.label :password, "New password", class: 'label'
+          .control
+            = f.password_field :password, class: 'input', autofocus: true, autocomplete: "new-password"
+        .field
+          = f.label :password_confirmation, "Confirm new password"
+          .control
+            = f.password_field :password_confirmation, autocomplete: "new-password"
+        .actions.has-text-centered
+          = f.submit "Trocar minha senha", class: 'button is-info'
+      .shared_links
+        = render "devise/shared/links"

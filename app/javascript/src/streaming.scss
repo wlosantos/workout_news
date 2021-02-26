@@ -1,0 +1,48 @@
+.content_video {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 15px;
+
+  .video_wrapper {
+
+    .video_thumbnail{
+      width: 100%;
+      height: 180px;
+
+      img {
+        min-width: 250px;
+        height: 180px;
+      }
+
+      .adjust_image {
+        object-fit: cover;
+      }
+    }
+
+    .video_description {
+      margin-top: 8px;
+      padding: 0 4px;
+      display: flex;
+      align-items: flex-start;
+      font-size: .9rem;
+
+      .avatar {
+        min-width: 32px;
+      }
+
+      .video_title {
+        font-weight: 500;
+      }
+
+      .video_author {
+        font-size: .8rem;
+      }
+
+      .video_published {
+        color: $color-grey;
+        font-size: .8rem;
+      }
+    }
+  }
+}

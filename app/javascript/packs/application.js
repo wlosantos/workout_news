@@ -1,7 +1,10 @@
 import Rails from "@rails/ujs"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import "packs/custom"
+import './flashMessages'
+import "./custom"
+require("trix")
+require("@rails/actiontext")
 
 Rails.start()
 ActiveStorage.start()

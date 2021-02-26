@@ -1,0 +1,30 @@
+.post_sidebar {
+  margin-left: 4px;
+}
+
+.post_tags {
+  margin-left: 4px;
+  margin-top: 4px;
+  background-color: #fff;
+  font-size: .9rem;
+
+  .tags_title {
+    padding: 10px;
+    font-size: .8rem;
+    background: $linkcolor;
+    color: #fff;
+  }
+}
+
+.tag_cloud {
+  font-size: .8rem;
+  padding: 10px;
+
+  .s{ color: $color-grey; }
+  .m{ color: #f60; }
+  .l{ color: $linkcolor; }
+
+  span::before {
+    content: '-'
+  }
+}

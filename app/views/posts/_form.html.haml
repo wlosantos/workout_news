@@ -1,0 +1,30 @@
+.content_form.mt-5
+  %h2.title.is-3.mb-5.has-text-centered #{ title }
+  = form_with(model: post, local: true) do |form|
+
+    .field
+      = form.label :title, class: 'label'
+      .control
+        = form.text_field :title, class: 'input'
+    .field
+      = form.label :tag_list, "Tags (separe as tags com virgulas)", class: 'label'
+      .control
+        = form.text_field :tag_list, class: 'input'
+    .field
+      = form.label :body, class: 'label'
+      .control
+        = form.rich_text_area :body, style: 'min-height: 600px; height: auto'
+    .columns
+      - if params[:action] == 'edit' && post.image.attached?
+        .column.is-2
+          .image_edit.has-text-right
+            %span
+              = image_tag post.image
+      .column
+        .field
+          = form.label 'Image upload', class: 'label'
+          .control
+            = form.file_field :image
+    .field
+      .control
+        = form.submit class: 'button is-info'

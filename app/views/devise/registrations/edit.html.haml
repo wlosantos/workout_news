@@ -1,0 +1,27 @@
+.devise__wrapper
+  .devise_container
+    .devise_anuncio
+      = image_tag(url_for('https://picsum.photos/800/800/?blur=2'), class: 'devise-back')
+    .devise_form
+      %h2.title.is-4 Editar Cadastro
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+        .field
+          .control
+            = f.email_field :email, class: 'input', autofocus: true, autocomplete: "email", placeholder: 'email'
+        .field
+          .control
+            = f.password_field :password, class: 'input', autocomplete: "new-password", placeholder: "nova senha"
+        .field
+          .control
+            = f.password_field :password_confirmation, class: 'input', autocomplete: "new-password", placeholder: 'nova senha confirmação'
+        .field
+          .control
+            = f.password_field :current_password, class: 'input', autocomplete: "current-password", placeholder: 'senha atual'
+        .actions.has-text-centered
+          = f.submit class: 'button is-info'
+      .shared_links
+        %h3 Cancelar sua conta
+        %p
+          Insatisfeito? #{button_to "Cancelar conta", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
+        .div.mt-2
+          = link_to "Back", :back

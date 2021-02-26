@@ -1,0 +1,25 @@
+.devise__wrapper
+  .devise_container
+    .devise_anuncio
+      = image_tag(url_for('https://picsum.photos/800/800/?blur=2'), class: 'devise-back')
+    .devise_form
+      %h2.title.is-4 Editar Perfil
+      = form_with model: current_user, url: profile_path, local: true, class: 'edit-profile' do |form|
+        .field
+          = form.label :avatar, class: 'label'
+          .control
+            = form.file_field :avatar
+        .field
+          .control
+            = form.text_field :name, class: 'input', placeholder: 'Nome'
+        .field
+          .control
+            = form.email_field :email, class: 'input', placeholder: 'Email'
+
+        .actions.has-text-centered
+          = form.submit class: 'button is-info'
+      .shared_links
+        %span.has-text-grey
+          = link_to 'alterar senha!', edit_user_registration_path
+        %div
+          = link_to 'voltar', :back

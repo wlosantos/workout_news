@@ -2,14 +2,19 @@
 !!! 5
 %html
   %head
-    %title W3n Templates
+    %title workout-news
     = csrf_meta_tags
     = csp_meta_tag
-    = favicon_link_tag asset_path('favicon.png')
+    = favicon_link_tag asset_path('news.png')
     %meta{name: "viewport", content: "width=device-width, initial-scale=1.0" }
 
     = stylesheet_pack_tag 'application'
     = javascript_pack_tag 'application'
 
-  %body
-    = yield
+  %body{:data => {:flash => {:messages => "#{JSON.dump(flash.to_a)}"}}}
+    = render 'shared/menubar'
+    %section
+      .container
+        = yield
+
+    = render 'shared/footer'
