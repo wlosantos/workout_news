@@ -1,22 +1,22 @@
 .main_wrapper
   %main
     .content_main
-      - @posts.each do |post|
+      - @streamings.each do |streaming|
         .post_content
           .post_image
-            = link_to post do
+            = link_to streaming do
               %figure.img_post
-                = get_image(post)
+                = image_tag(@streaming.tumbnail)
           .post_description
             .post_title
-              %h4 #{ post.title }
+              %h4 #{ streaming.title }
               %small
-                #{ l post.created_at, format: :short }
+                #{ l streaming.created_at, format: :short }
             .post_body
-              %p.mb-3 #{ truncate(strip_tags(post.body.to_s), length: 180) }
+              -# %p.mb-3 #{ truncate(strip_tags(post.body.to_s), length: 180) }
             .post_footer.has-text-right
               .post_tags
-                - if post.tag_list.any?
+                -# - if post.tag_list.any?
                   .tag_detail
                     %strong Tags:
                   #{ raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') }
@@ -24,10 +24,10 @@
     %hr
     .pages-content
       %div
-        = paginate @posts
+        = paginate @streamings
 
   %aside
     .post_sidebar
       - if current_user.kind == 'admin'
         = render 'users/user_profile', profile: current_user
-      = render 'shared/tags'
+      -# = render 'shared/tags'

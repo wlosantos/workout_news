@@ -1,0 +1,39 @@
+%link{href: "https://vjs.zencdn.net/7.10.2/video-js.css", rel: "stylesheet"}
+
+.main_wrapper
+  %main
+    .show_container
+      - if current_user == @streaming.created_by && @streaming.created_by.kind == 'admin'
+        .post_editor.has-text-right
+          = link_to edit_streaming_path(@streaming), class: 'button is-small is-link' do
+            %i.fas.fa-pencil-alt.mr-2
+            editar
+          = link_to streaming_path(@streaming), method: :delete, class: 'button is-small is-danger ml-2', data: {confirm: 'Você tem certeza?'} do
+            %i.fas.fa-trash.mr-2
+            deletar
+
+      .show_title.mt-4
+        %h1.title.is-4.mb-0 #{ @streaming.title }
+        %small.has-text-grey publicado: #{ time_ago_in_words @streaming.created_at }
+
+      .video_description
+        .streaming_container
+          %span
+            %video{id: "my-video", class: "video-js", controls: '', preload: "auto", width: "640", height: "", poster: "#{url_for(@streaming.tumbnail)}", data:{setup:"{}"}}
+              %source{src: "#{url_for(@streaming.video)}", type: "video/mp4"}
+
+      .show_description.mt-5
+        .content_post_show
+          %p #{ @streaming.description }
+          .post_author
+            %div
+              %span criado por
+            .author_user
+              = render 'shared/user_avatar', user: @streaming
+          %hr
+
+  %aside
+    .post_sidebar
+      = render 'users/user_profile', profile: @streaming.created_by
+
+%script{src: "https://vjs.zencdn.net/7.10.2/video.min.js"}

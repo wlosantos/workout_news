@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'tags/:tag', to: 'posts#index', as: :tag
 
+  resources :streamings
+
   resources :posts do
     resources :comments, module: :posts
   end

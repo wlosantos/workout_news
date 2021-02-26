@@ -6,7 +6,9 @@
       %h2.title.is-4 Editar Perfil
       = form_with model: current_user, url: profile_path, local: true, class: 'edit-profile' do |form|
         .field
-          = form.file_field :avatar
+          = form.label :avatar, class: 'label'
+          .control
+            = form.file_field :avatar
         .field
           .control
             = form.text_field :name, class: 'input', placeholder: 'Nome'

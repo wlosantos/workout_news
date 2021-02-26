@@ -10,23 +10,22 @@
         %span
 
     .navbar-menu
-      -if user_signed_in? && current_user.kind == 'admin'
-        .navbar-start
-          = link_to posts_path, class: 'navbar-item' do
-            %i.far.fa-newspaper.mr-2
-            Artigos
-          = link_to '#', class: 'navbar-item' do
-            %i.far.fa-file-video.mr-2
-            Videos
+      .navbar-start
+        = link_to posts_path, class: 'navbar-item' do
+          %i.far.fa-newspaper.mr-2
+          Artigos
+        = link_to streamings_path, class: 'navbar-item' do
+          %i.far.fa-file-video.mr-2
+          Videos
       .navbar-end
-        -if user_signed_in?
+        -if user_signed_in? && current_user.kind == 'admin'
           .navbar-item.has-dropdown.is-hoverable.is-flex
             = link_to '#', class: 'navbar-link' do
               .profile
                 = get_avatar(current_user)
               = current_user.username
             .navbar-dropdown.is-right
-              -if current_user.kind == 'admin'
+              -if current_user.kind == 'manager'
                 = link_to '#', class: 'navbar-item' do
                   %i.fas.fa-user-lock.mr-2
                   Administration
@@ -36,7 +35,7 @@
               = link_to new_post_path, class: 'navbar-item' do
                 %i.fas.fa-newspaper.mr-2
                 Novo Artigo
-              = link_to new_post_path, class: 'navbar-item' do
+              = link_to new_streaming_path, class: 'navbar-item' do
                 %i.far.fa-file-video.mr-2
                 Novo Video
               = link_to edit_profile_path, class: 'navbar-item' do
@@ -47,6 +46,20 @@
                 %i.fas.fa-door-open.mr-2
                 Exit
 
+        - elsif user_signed_in?
+          .navbar-item.has-dropdown.is-hoverable.is-flex
+            = link_to '#', class: 'navbar-link' do
+              .profile
+                = get_avatar(current_user)
+              = current_user.username
+            .navbar-dropdown.is-right
+              = link_to edit_profile_path, class: 'navbar-item' do
+                %i.fas.fa-user.mr-2
+                Editar Cadastro
+              .navbar-divider
+              = link_to destroy_user_session_path, method: :delete, class: 'navbar-item', data: {confirm: 'Are you sure?'} do
+                %i.fas.fa-door-open.mr-2
+                Exit
         - else
           = link_to new_user_session_path, class: 'navbar-item is-small' do
             %i.fas.fa-sign-in-alt.mr-2
