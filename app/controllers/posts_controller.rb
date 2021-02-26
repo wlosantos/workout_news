@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   def index
     if params[:tag]
-      @posts = Post.tagged_with(params[:tag]).order(created_at: :desc)
+      @posts = Post.tagged_with(params[:tag]).order(created_at: :desc).page(params[:page]).per(24)
     else
       @posts = Post.page(params[:page]).per(24)
     end
