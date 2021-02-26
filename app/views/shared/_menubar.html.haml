@@ -12,12 +12,12 @@
     .navbar-menu
       -if user_signed_in? && current_user.kind == 'admin'
         .navbar-start
-          = link_to new_post_path, class: 'navbar-item' do
+          = link_to posts_path, class: 'navbar-item' do
             %i.far.fa-newspaper.mr-2
-            Novo Post
-          = link_to new_post_path, class: 'navbar-item' do
+            Artigos
+          = link_to '#', class: 'navbar-item' do
             %i.far.fa-file-video.mr-2
-            Novo Video
+            Videos
       .navbar-end
         -if user_signed_in?
           .navbar-item.has-dropdown.is-hoverable.is-flex
@@ -30,9 +30,15 @@
                 = link_to '#', class: 'navbar-item' do
                   %i.fas.fa-user-lock.mr-2
                   Administration
-              = link_to user_path(current_user), class: 'navbar-item' do
+              = link_to '#', class: 'navbar-item' do
                 %i.fas.fa-list.mr-2
                 Profiles
+              = link_to new_post_path, class: 'navbar-item' do
+                %i.fas.fa-newspaper.mr-2
+                Novo Artigo
+              = link_to new_post_path, class: 'navbar-item' do
+                %i.far.fa-file-video.mr-2
+                Novo Video
               = link_to edit_profile_path, class: 'navbar-item' do
                 %i.fas.fa-user.mr-2
                 Editar Cadastro

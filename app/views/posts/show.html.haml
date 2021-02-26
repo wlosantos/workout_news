@@ -1,6 +1,15 @@
 .main_wrapper
   %main
     .show_container
+      - if current_user == @post.created_by && @post.created_by.kind == 'admin'
+        .post_editor.has-text-right
+          = link_to edit_post_path(@post), class: 'button is-small is-link' do
+            %i.fas.fa-pencil-alt.mr-2
+            editar
+          = link_to post_path(@post), method: :delete, class: 'button is-small is-danger ml-2', data: {confirm: 'Você tem certeza?'} do
+            %i.fas.fa-trash.mr-2
+            deletar
+
       .show_title.mt-4
         %h1.title.is-4.mb-0 #{ @post.title }
         %small.has-text-grey published: #{ l @post.created_at, format: :short }
@@ -30,3 +39,6 @@
           = render 'comments/comments', commentable: @comments
 
   %aside
+    .post_sidebar
+      = render 'users/user_profile', profile: @post.created_by
+      = render 'shared/tags'

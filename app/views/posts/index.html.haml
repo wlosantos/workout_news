@@ -27,4 +27,6 @@
         = paginate @posts
 
   %aside
-    = render 'shared/sidebar'
+    .post_sidebar
+      = render 'users/user_profile', profile: current_user
+      = render 'shared/tags'
