@@ -31,6 +31,17 @@
             .author_user
               = render 'shared/user_avatar', user: @streaming
           %hr
+      .post_comments
+        %h3.subtitle.is-4 Comentários( #{ @comments.count })
+        - if user_signed_in?
+          = render 'comments/form', commentable: @streaming
+
+        - else
+          %div.comment_alert
+            Acesse sua conta e deixe seu comentário!
+        %hr
+        - if @comments.any?
+          = render 'comments/comments', commentable: @comments
 
   %aside
     .post_sidebar
