@@ -28,6 +28,7 @@
 
   %aside
     .post_sidebar
-      - if current_user.kind == 'admin'
-        = render 'users/user_profile', profile: current_user
+      - if user_signed_in?
+        - if current_user.kind == 'admin'
+          = render 'users/user_profile', profile: current_user
       = render 'shared/tags'

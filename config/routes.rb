@@ -2,11 +2,11 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :users, only: %i[ show ]#, params: :username
+  resources :users, only: %i[ show ]
   get 'edit_profile', to: 'users#edit'
   patch 'profile', to: 'users#update'
 
-  root 'home#index'
+  root 'posts#index'
   get 'tags/:tag', to: 'posts#index', as: :tag
 
   resources :streamings do
@@ -17,4 +17,5 @@ Rails.application.routes.draw do
     resources :comments, module: :posts
   end
 
+  get 'home', to: 'homes#index'
 end
