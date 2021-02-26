@@ -1,0 +1,12 @@
+.profile_wrapper
+  .user_detail
+    .user_image
+      = get_avatar(current_user)
+    .detail_name
+      %div.has-text-grey
+        #{ current_user.name }
+      .detail_username
+        = link_to '#' do
+          #{ current_user.username }
+    .detail_user_follow
+      %i.fas.fa-check
