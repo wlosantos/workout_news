@@ -1,0 +1,8 @@
+.comment_form
+  = form_with(model:[commentable, Comment.new], local: true) do |form|
+    .field
+      = form.label :commenter, class: 'label'
+      .control
+        = form.text_area :commenter, class: 'textarea', required: true, rows: 2
+    .field
+      = form.submit class: 'button is-info'

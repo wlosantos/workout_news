@@ -17,4 +17,15 @@
             .author_user
               = render 'shared/user_avatar', user: @post
           %hr
+      .post_comments
+        %h3.subtitle.is-4 Comentários
+        - if user_signed_in?
+          = render 'comments/form', commentable: @post
+
+        - else
+          %div.comment_alert
+            Acesse sua conta e deixe seu comentário!
+        %hr
+        .comment-list
+          = render 'comments/comments', commentable: @post
   %aside

@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
 
   belongs_to :created_by, class_name: 'User'
-  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :comments, as: :commentable
 
   has_one_attached :image
   has_rich_text :body

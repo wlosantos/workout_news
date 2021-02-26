@@ -6,7 +6,8 @@ class User < ApplicationRecord
 
   has_many :posts, foreign_key: :created_by_id, dependent: :destroy
   has_many :streamings, foreign_key: :created_by_id, dependent: :destroy
-  has_many :comments, as: :commentable
+  has_many :comments, foreign_key: :created_by_id, dependent: :destroy
+  has_one_attached :avatar
 
   enum kind: [:user, :admin, :maneger]
   enum status: [:active, :inactive]

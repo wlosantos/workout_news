@@ -1,6 +1,6 @@
 @import "trix/dist/trix";
 
-.trix-button-group.trix-button-group--block-tools,
+// .trix-button-group.trix-button-group--block-tools,
 .trix-button-group.trix-button-group--file-tools,
 .trix-button-group.trix-button-group--history-tools {
   display: none;
@@ -36,4 +36,22 @@ html, body {
 .avatar {
   color: $color-info;
   font-size: .9rem;
+}
+
+.detail_user {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  .photo {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+
+  .user_name {
+    font-size: 1rem;
+    font-weight: 500;
+  }
 }

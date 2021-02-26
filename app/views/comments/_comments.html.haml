@@ -1,0 +1,5 @@
+.comment-list
+  - commentable.comments.each do |comment|
+    -if comment.present?
+      -# = get_avatar comment.created_by
+      %p #{ comment.commenter }
