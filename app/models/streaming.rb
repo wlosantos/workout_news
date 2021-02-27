@@ -8,4 +8,5 @@ class Streaming < ApplicationRecord
   has_rich_text :description
 
   enum published: [ :pending, :published ]
+
 end

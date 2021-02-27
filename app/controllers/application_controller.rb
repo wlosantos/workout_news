@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   private
 
   def layout_by_resource
-    "authentication" if devise_controller? || (params[:controller] == 'users' && params[:action] != 'show')
+    "authentication" if devise_controller? || (params[:controller] == 'users' && params[:action] != 'show' && params[:profile])
   end
 
   def configure_permitted_parameters

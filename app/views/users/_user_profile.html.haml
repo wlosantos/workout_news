@@ -6,7 +6,7 @@
       %div.has-text-grey
         #{ profile.name }
       .detail_username
-        = link_to '#' do
+        = link_to user_path(profile) do
           #{ profile.username }
   - if current_user != profile
     .detail_user_follow

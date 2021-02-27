@@ -9,6 +9,12 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def profile
+    if current_user.kind == 'user'
+      render 'post/index'
+    end
+  end
+
   def update
     if current_user.update(user_params)
      redirect_to posts_path, notice: 'Seu perfil foi atualizado com successo!!!'

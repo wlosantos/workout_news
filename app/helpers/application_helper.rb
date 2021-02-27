@@ -31,4 +31,8 @@ module ApplicationHelper
     Friend.friend_requested(user.id)
   end
 
+  def list_friends(user)
+    Friend.list_friends_requested(user)
+  end
+
 end

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: %i[ show ]
   get 'edit_profile', to: 'users#edit'
+  get 'adm_profile', to: 'users#profile'
   patch 'profile', to: 'users#update'
 
   root 'posts#index'

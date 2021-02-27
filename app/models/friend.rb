@@ -10,4 +10,8 @@ class Friend < ApplicationRecord
     where(friend: user, status: :pending).count
   end
 
+  def self.list_friends_requested(user)
+    where(friend: user, status: :pending)
+  end
+
 end

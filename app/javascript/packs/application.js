@@ -4,6 +4,7 @@ import "channels"
 import './flashMessages'
 import './social'
 import "./custom"
+import "./profile"
 require("trix")
 require("@rails/actiontext")
 

@@ -1,0 +1,32 @@
+.tab_wrapper {
+  display: none;
+}
+
+.panel_tabs {
+  margin-top: 2rem;
+}
+
+.perfil_container {
+  background: #fff;
+  border-radius: 5px;
+  position: relative;
+
+  .perfil_title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: $color-info;
+    border-radius: 5px 0 0 5px;
+    color: #fff;
+  }
+}
+
+.profile_comments {
+  display: flex;
+  align-items: stretch;
+
+  .comments_tabs {
+    flex: 1;
+  }
+}
