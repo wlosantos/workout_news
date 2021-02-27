@@ -18,10 +18,16 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
 
   # TODO: Adicionar method para retirar espaços do username
-
+  # # TODO: Soma total de commentários pendentes
   def friend_by?(amigo)
     friends.where(friend: amigo).exists?
   end
+
+  def friend_count_requested
+    friends.where(status: :pending).count
+  end
+
+
 
   private
 

@@ -27,8 +27,8 @@ module ApplicationHelper
     image_tag avatar, class: css_class
   end
 
-  def set_friend(friend, status = 'pending')
-    {friend: friend, status: status}.to_json
+  def requested_friends(user)
+    Friend.friend_requested(user.id)
   end
 
 end

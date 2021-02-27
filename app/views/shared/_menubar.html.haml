@@ -1,9 +1,9 @@
-%nav.navbar
+%nav.navbar.is-dark
   .container
     .navbar-brand
       = link_to posts_path, class: 'navbar-item' do
         = image_tag 'news.png'
-        %h1.title.is-5.pl-3 workout-news
+        %h1.title.has-text-white.is-5.pl-3 workout-news
       .navbar-burguer.burguer#hover-menu
         %span
         %span
@@ -19,6 +19,14 @@
           Videos
       .navbar-end
         -if user_signed_in? && current_user.kind == 'admin'
+          = link_to '#', class: 'navbar-item' do
+            .social_count.px-2
+              %i.fas.fa-comment
+              %span 99
+          = link_to '#', class: 'navbar-item' do
+            .social_count.px-2
+              %i.fas.fa-user
+              %span= requested_friends(current_user)
           .navbar-item.has-dropdown.is-hoverable.is-flex
             = link_to '#', class: 'navbar-link' do
               .profile

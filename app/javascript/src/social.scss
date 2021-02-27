@@ -1,0 +1,21 @@
+.social_count {
+  position: relative;
+
+  span {
+    position: absolute;
+    top: -7px;
+    right: -3px;
+    line-height: .8rem;
+    text-align: center;
+    display: block;
+    // min-width: 15px;
+    // min-height: 15px;
+    background-color: #fb622e;
+    border: 1px solid #363636;
+    color: #fff;
+    padding: 2px;
+    font-size: .8rem;
+    font-weight: 500;
+    border-radius: 10px;
+  }
+}

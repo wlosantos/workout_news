@@ -6,4 +6,8 @@ class Friend < ApplicationRecord
 
   validates :friend, presence: true
 
+  def self.friend_requested(user)
+    where(friend: user, status: :pending).count
+  end
+
 end
