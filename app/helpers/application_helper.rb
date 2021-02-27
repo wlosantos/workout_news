@@ -27,4 +27,12 @@ module ApplicationHelper
     image_tag avatar, class: css_class
   end
 
+  def requested_friends(user)
+    Friend.friend_requested(user.id)
+  end
+
+  def list_friends(user)
+    Friend.list_friends_requested(user)
+  end
+
 end

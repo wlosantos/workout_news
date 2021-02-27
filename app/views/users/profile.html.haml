@@ -1,0 +1,162 @@
+.main_wrapper
+  %main
+    .panel_tabs
+      .tabs.is-boxed
+        %ul
+          %li.is-active
+            %a
+              %i.far.fa-newspaper.mr-2
+              Posts
+          %li
+            %a
+              %i.far.fa-file-video.mr-2
+              Videos
+          %li
+            %a
+              %i.fas.fa-comment.mr-2
+              Comentários dos Posts
+          %li
+            %a
+              %i.far.fa-comment.mr-2
+              Comentários dos Vídeos
+          %li
+            %a
+              %i.fas.fa-user.mr-2
+              Follow
+
+      .tab_content
+        .tab_wrapper{style: 'display: block'}
+          %table.table.is-striped.is-fullwidth
+            %thead
+              %tr
+                %th #
+                %th Post
+                %th Description
+                %th Comments
+                %th status
+                %th{width: '5px'}
+                %th{width: '5px'}
+            %tbody
+              - if current_user.posts.any?
+                - current_user.posts.each do |post|
+                  %tr
+                    %td{align: 'right'} #{ post.id }
+                    %td #{ post.title }
+                    %td #{ truncate(strip_tags(post.body.to_s), length: 45) }
+                    %td{align: 'center'} #{ post.comments.count }
+                    %td #{ post.published }
+                    %td
+                      = link_to edit_post_path(post), class:'' do
+                        %i.fas.fa-edit
+                    %td
+                      = link_to '#' do
+                        %i.fas.fa-trash-alt
+
+        .tab_wrapper
+          %table.table.is-striped.is-fullwidth
+            %thead
+              %tr
+                %th #
+                %th Videos
+                %th Description
+                %th Comments
+                %th status
+                %th{width: '5px', colspan: '2'}
+            %tbody
+              - if current_user.streamings.any?
+                - current_user.streamings.each do |streaming|
+                  %tr
+                    %td{align: 'right'} #{ streaming.id }
+                    %td #{ streaming.title }
+                    %td #{ truncate(strip_tags(streaming.description.to_s), length: 45) }
+                    %td
+                    %td #{ streaming.published }
+                    %td
+                      = link_to edit_streaming_path(streaming), class:'' do
+                        %i.fas.fa-edit
+                    %td
+                      = link_to '#' do
+                        %i.fas.fa-trash-alt
+
+        .tab_wrapper
+          %table.table.is-striped.is-fullwidth
+            %thead
+              %tr
+                %th ID
+                %th Post
+                %th Comentários
+            %tbody
+              - current_user.posts.each do |post|
+                - if post.comments.count > 0
+                  %tr
+                    %td #{ post.id }
+                    %td #{ post.title }
+                    %td
+                      %table.table.is-fullwidth
+                        - post.comments.each do |comment|
+                          %tr
+                            %td #{ comment.commenter }
+                            %td #{ comment.created_by.name }
+                            %td #{ comment.published }
+                            - if comment.published == 'pending'
+                              %td
+                                = link_to '#', class: 'is-link' do
+                                  %i.fas.fa-lock
+                            - else
+                              %td
+                                = link_to '#', class: 'is-link' do
+                                  %i.far.fa-thumbs-up
+
+        .tab_wrapper
+          %table.table.is-striped.is-fullwidth
+            %thead
+              %tr
+                %th ID
+                %th Video
+                %th Comentários
+            %tbody
+              - current_user.streamings.each do |streaming|
+                - if streaming.comments.count > 0
+                  %tr
+                    %td #{ streaming.id }
+                    %td #{ streaming.title }
+                    %td
+                      %table.table.is-fullwidth
+                        - streaming.comments.each do |comment|
+                          %tr
+                            %td #{ comment.commenter }
+                            %td #{ comment.created_by.name }
+                            %td #{ comment.published }
+                            - if comment.published == 'pending'
+                              %td
+                                = link_to '#', class: 'is-link' do
+                                  %i.fas.fa-lock
+                            - else
+                              %td
+                                = link_to '#', class: 'is-link' do
+                                  %i.far.fa-thumbs-up
+
+        .tab_wrapper
+          %table.table.is-striped.is-fullwidth
+            %thead
+              %tr
+                %th #
+                %th Data
+                %td Solicitante
+                %td Username
+                %td
+            %tbody
+              - list_friends(current_user).each do |friend|
+                %tr
+                  %td #{ friend.id }
+                  %td #{ l friend.created_at ,format: :short }
+                  %td #{ friend.requested_by.name }
+                  %td #{ friend.requested_by.username }
+                  - if friend.status == 'pending'
+                    %td
+                      = link_to '#', class: 'is-link' do
+                        %i.fas.fa-lock
+                  - else
+                    %td
+                      = link_to '#', class: 'is-link' do
+                        %i.far.fa-thumbs-up

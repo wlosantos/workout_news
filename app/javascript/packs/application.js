@@ -2,7 +2,9 @@ import Rails from "@rails/ujs"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import './flashMessages'
+import './social'
 import "./custom"
+import "./profile"
 require("trix")
 require("@rails/actiontext")
 

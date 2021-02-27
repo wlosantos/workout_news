@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_25_012002) do
+ActiveRecord::Schema.define(version: 2021_02_26_213744) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -60,6 +60,15 @@ ActiveRecord::Schema.define(version: 2021_02_25_012002) do
     t.integer "created_by_id", null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
     t.index ["created_by_id"], name: "index_comments_on_created_by_id"
+  end
+
+  create_table "friends", force: :cascade do |t|
+    t.integer "friend"
+    t.integer "status", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "requested_by_id", null: false
+    t.index ["requested_by_id"], name: "index_friends_on_requested_by_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -129,6 +138,7 @@ ActiveRecord::Schema.define(version: 2021_02_25_012002) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "users", column: "created_by_id"
+  add_foreign_key "friends", "users", column: "requested_by_id"
   add_foreign_key "posts", "users", column: "created_by_id"
   add_foreign_key "streamings", "users", column: "created_by_id"
   add_foreign_key "taggings", "tags"
