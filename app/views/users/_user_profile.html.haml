@@ -10,6 +10,12 @@
           #{ profile.username }
   - if current_user != profile
     .detail_user_follow
-      = link_to '#', class: 'button is-success is-small is-rounded' do
-        %i.fas.fa-check.mr-2
-        Seguir
+      .action{data:{social:{id: "#{profile.id}"}}}
+        -if user_signed_in?
+          - if !current_user.friend_by?(profile.id)
+            .btn_solicitar
+              %i.fas.fa-user-plus.mr-1
+              adicionar
+          - else
+            .btn_aguardando
+              pendente...

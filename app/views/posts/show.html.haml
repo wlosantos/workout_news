@@ -12,7 +12,7 @@
 
       .show_title.mt-4
         %h1.title.is-4.mb-0 #{ @post.title }
-        %small.has-text-grey published: #{ l @post.created_at, format: :short }
+        %small.has-text-grey publicado: #{ l @post.created_at, format: :short }
 
       .show_description
         .banner_image_show
@@ -41,4 +41,5 @@
   %aside
     .post_sidebar
       = render 'users/user_profile', profile: @post.created_by
+    %div.mt-5
       = render 'shared/tags'

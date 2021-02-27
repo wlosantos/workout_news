@@ -106,10 +106,26 @@ html, body {
     }
   }
   .detail_user_follow {
-    font-size: .8rem;
-    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
   }
+}
+
+.btn_solicitar {
+  font-size: .7rem;
+  font-weight: 400;
+  color: #fff;
+  background: $color-info;
+  padding: 3px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btn_aguardando {
+  font-size: .7rem;
+  font-weight: 400;
+  color: #fff;
+  background: #9c9c9c;
+  padding: 3px 15px;
+  border-radius: 10px;
 }
