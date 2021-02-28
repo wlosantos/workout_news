@@ -27,7 +27,9 @@ class User < ApplicationRecord
     friends.where(status: :pending).count
   end
 
-
+  def friend_confirm?(amigo)
+    friends.where(friend: amigo, status: 'accepted').exists?
+  end
 
   private
 
