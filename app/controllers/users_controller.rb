@@ -13,6 +13,9 @@ class UsersController < ApplicationController
     if current_user.kind == 'user'
       render 'post/index'
     end
+
+    @posts = current_user.posts.all
+    @streamings = current_user.streamings.all
   end
 
   def update

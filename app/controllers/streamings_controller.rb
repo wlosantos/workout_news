@@ -11,7 +11,7 @@ class StreamingsController < ApplicationController
   end
 
   def show
-    @comments = @streaming.comments
+    @comments = @streaming.comments.where(published: :published)
   end
 
   def edit

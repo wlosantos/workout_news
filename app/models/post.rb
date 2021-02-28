@@ -16,4 +16,12 @@ class Post < ApplicationRecord
   scope :pending, -> { where(published: :pending) }
   scope :datePublished, -> { order(published: :asc, created_at: :desc) }
 
+  def list_comments_pending
+    self.comments.select {|c| c.published == 'pending'}
+  end
+
+  def total_comments?
+    self.list_comments_pending.any?
+  end
+
 end
