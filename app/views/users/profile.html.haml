@@ -88,24 +88,22 @@
             %tbody
               - current_user.posts.each do |post|
                 - if post.comments.count > 0
-                  %tr
-                    %td #{ post.id }
-                    %td #{ post.title }
-                    %td
-                      %table.table.is-fullwidth
-                        - post.comments.each do |comment|
-                          %tr
-                            %td #{ comment.commenter }
-                            %td #{ comment.created_by.name }
-                            %td #{ comment.published }
-                            - if comment.published == 'pending'
-                              %td
-                                = link_to '#', class: 'is-link' do
-                                  %i.fas.fa-lock
-                            - else
-                              %td
-                                = link_to '#', class: 'is-link' do
-                                  %i.far.fa-thumbs-up
+                  - post.comments.each do |comments|
+                    -if comments.published == 'pending'
+                      %tr
+                        %td #{ post.id }
+                        %td #{ post.title }
+                        %td
+                          %table.table.is-fullwidth
+                            - post.comments.each do |comment|
+                              %tr{class: "trcomment-#{comment.id}"}
+                                %td #{ comment.commenter }
+                                %td #{ comment.created_by.name }
+                                %td #{ comment.published }
+                                %td
+                                  .action{data:{post:{comment: "#{update_comment_post(comment.id, 'published', 'post')}"}}}
+                                    .btn_comment_post
+                                      %i.fas.fa-lock
 
         .tab_wrapper
           %table.table.is-striped.is-fullwidth
@@ -117,24 +115,22 @@
             %tbody
               - current_user.streamings.each do |streaming|
                 - if streaming.comments.count > 0
-                  %tr
-                    %td #{ streaming.id }
-                    %td #{ streaming.title }
-                    %td
-                      %table.table.is-fullwidth
-                        - streaming.comments.each do |comment|
-                          %tr
-                            %td #{ comment.commenter }
-                            %td #{ comment.created_by.name }
-                            %td #{ comment.published }
-                            - if comment.published == 'pending'
-                              %td
-                                = link_to '#', class: 'is-link' do
-                                  %i.fas.fa-lock
-                            - else
-                              %td
-                                = link_to '#', class: 'is-link' do
-                                  %i.far.fa-thumbs-up
+                  - streaming.comments.each do |streamings|
+                    - if streamings.published == 'pending'
+                      %tr
+                        %td #{ streaming.id }
+                        %td #{ streaming.title }
+                        %td
+                          %table.table.is-fullwidth
+                            - streaming.comments.each do |comment|
+                              %tr
+                                %td #{ comment.commenter }
+                                %td #{ comment.created_by.name }
+                                %td#streamingComment #{ comment.published }
+                                %td
+                                  .action{data:{post:{comment: "#{update_comment_post(comment.id, 'published', 'streaming')}"}}}
+                                    .btn_comment_post
+                                      %i.fas.fa-lock
 
         .tab_wrapper
           %table.table.is-striped.is-fullwidth
@@ -154,9 +150,6 @@
                   %td #{ friend.requested_by.username }
                   - if friend.status == 'pending'
                     %td
-                      = link_to '#', class: 'is-link' do
-                        %i.fas.fa-lock
-                  - else
-                    %td
-                      = link_to '#', class: 'is-link' do
-                        %i.far.fa-thumbs-up
+                      .action{data:{social:{id: "#{updated_friend(friend.id, 'accepted')}"}}}
+                        .btn_social
+                          %i.fas.fa-lock

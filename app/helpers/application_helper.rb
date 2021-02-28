@@ -35,4 +35,12 @@ module ApplicationHelper
     Friend.list_friends_requested(user)
   end
 
+  def updated_friend(id, status)
+    {id: id, status: status}.to_json
+  end
+
+  def update_comment_post(commentid, published, origem)
+    {id: commentid, published: published, origem: origem}.to_json
+  end
+
 end
