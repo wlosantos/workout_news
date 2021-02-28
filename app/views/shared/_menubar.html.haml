@@ -26,7 +26,8 @@
           = link_to '#', class: 'navbar-item' do
             .social_count.px-2
               %i.fas.fa-user
-              %span= requested_friends(current_user)
+              - if requested_friends(current_user) > 0
+                %span= requested_friends(current_user)
           .navbar-item.has-dropdown.is-hoverable.is-flex
             = link_to '#', class: 'navbar-link' do
               .profile
