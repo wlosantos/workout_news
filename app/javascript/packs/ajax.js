@@ -47,8 +47,9 @@ const connection = (url, options) => {
 const updated_comment = event => {
   const actionElement = event.target.closest('.action');
   const dados = JSON.parse(actionElement.dataset.postComment);
-  const txtPost  = document.querySelector('#postComment');
-  const txtVideo = document.querySelector('#streamingComment')
+
+  const linhaVideo = document.querySelector(`.cmtVideo-${dados.id}`)
+  const linhaPost = document.querySelector(`.cmtPost-${dados.id}`)
 
   const url = `/comment_update/${dados.id}`
   const options = {
@@ -58,5 +59,11 @@ const updated_comment = event => {
   }
 
   connection(url, options)
+
+  if(dados.origem == 'post') {
+    linhaPost.style.display = 'none'
+  } else {
+    linhaVideo.style.display = 'none'
+  }
 
 }

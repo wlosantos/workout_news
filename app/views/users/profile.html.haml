@@ -37,8 +37,8 @@
                 %th{width: '5px'}
                 %th{width: '5px'}
             %tbody
-              - if current_user.posts.any?
-                - current_user.posts.each do |post|
+              - if @posts.any?
+                - @posts.each do |post|
                   %tr
                     %td{align: 'right'} #{ post.id }
                     %td #{ post.title }
@@ -63,8 +63,8 @@
                 %th status
                 %th{width: '5px', colspan: '2'}
             %tbody
-              - if current_user.streamings.any?
-                - current_user.streamings.each do |streaming|
+              - if @streamings.any?
+                - @streamings.each do |streaming|
                   %tr
                     %td{align: 'right'} #{ streaming.id }
                     %td #{ streaming.title }
@@ -86,24 +86,25 @@
                 %th Post
                 %th Comentários
             %tbody
-              - current_user.posts.each do |post|
-                - if post.comments.count > 0
-                  - post.comments.each do |comments|
-                    -if comments.published == 'pending'
-                      %tr
-                        %td #{ post.id }
-                        %td #{ post.title }
-                        %td
-                          %table.table.is-fullwidth
-                            - post.comments.each do |comment|
-                              %tr{class: "trcomment-#{comment.id}"}
-                                %td #{ comment.commenter }
-                                %td #{ comment.created_by.name }
-                                %td #{ comment.published }
-                                %td
-                                  .action{data:{post:{comment: "#{update_comment_post(comment.id, 'published', 'post')}"}}}
-                                    .btn_comment_post
-                                      %i.fas.fa-lock
+              - @posts.each do |post|
+                - if post.total_comments?
+                  %tr
+                    %td #{ post.id }
+                    %td #{ post.title }
+                    %td
+                      %table.table.is-striped.is-fullwidth
+                        - post.list_comments_pending.each do |post_comment|
+                          %tr{class: "cmtPost-#{post_comment.id}"}
+                            %td #{ post_comment.commenter }
+                            %td #{ post_comment.published }
+                            %td{width: '5px'}
+                              .action{data:{post:{comment: "#{update_comment_post(post_comment.id, 'published', 'post')}"}}}
+                                .btn_comment_post
+                                  %i.fas.fa-lock
+                            %td{width: '5px'}
+                              %span
+                                %i.fas.fa-trash
+
 
         .tab_wrapper
           %table.table.is-striped.is-fullwidth
@@ -113,24 +114,24 @@
                 %th Video
                 %th Comentários
             %tbody
-              - current_user.streamings.each do |streaming|
-                - if streaming.comments.count > 0
-                  - streaming.comments.each do |streamings|
-                    - if streamings.published == 'pending'
-                      %tr
-                        %td #{ streaming.id }
-                        %td #{ streaming.title }
-                        %td
-                          %table.table.is-fullwidth
-                            - streaming.comments.each do |comment|
-                              %tr
-                                %td #{ comment.commenter }
-                                %td #{ comment.created_by.name }
-                                %td#streamingComment #{ comment.published }
-                                %td
-                                  .action{data:{post:{comment: "#{update_comment_post(comment.id, 'published', 'streaming')}"}}}
-                                    .btn_comment_post
-                                      %i.fas.fa-lock
+              - @streamings.each do |streaming|
+                - if streaming.total_comments?
+                  %tr
+                    %td #{ streaming.id }
+                    %td #{ streaming.title }
+                    %td
+                      %table.table.is-striped.is-fullwidth
+                        - streaming.list_comments_pending.each do |comment|
+                          %tr{class: "cmtVideo-#{comment.id}"}
+                            %td #{ comment.commenter }
+                            %td #{ comment.published }
+                            %td{width: '5px'}
+                              .action{data:{post:{comment: "#{update_comment_post(comment.id, 'published', 'streaming')}"}}}
+                                .btn_comment_post
+                                  %i.fas.fa-lock
+                            %td{width: '5px'}
+                              %span
+                                %i.fas.fa-trash
 
         .tab_wrapper
           %table.table.is-striped.is-fullwidth
