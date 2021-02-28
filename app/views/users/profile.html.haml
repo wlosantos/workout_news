@@ -100,8 +100,9 @@
                             %td #{ comment.published }
                             - if comment.published == 'pending'
                               %td
-                                = link_to '#', class: 'is-link' do
-                                  %i.fas.fa-lock
+                                .action{data:{post:{comment: "#{update_comment_post(comment.id, post.id, 'published')}"}}}
+                                  .btn_comment_post
+                                    %i.fas.fa-lock
                             - else
                               %td
                                 = link_to '#', class: 'is-link' do

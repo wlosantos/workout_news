@@ -13,10 +13,11 @@ Rails.application.routes.draw do
   resources :streamings do
     resources :comments, module: :streamings
   end
-
   resources :posts do
     resources :comments, module: :posts
   end
+
+  patch 'comment_update/:id', to: 'comments#update'
 
   resources :friends, only: %i[ create update ]
 

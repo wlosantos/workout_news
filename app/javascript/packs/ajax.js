@@ -10,7 +10,11 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
   document.querySelectorAll('.action .btn_social').forEach(button => {
     button.addEventListener('click', updated_friend);
-  })
+  });
+
+  document.querySelectorAll('.action .btn_comment_post').forEach(button => {
+    button.addEventListener('click', updated_comment_post);
+  });
 
 });
 
@@ -37,4 +41,19 @@ const connection = (url, options) => {
   .then(response => response.json())
   .then(data => console.log(data))
   .catch(errors => console.log('ERROR: ' + errors))
+}
+
+const updated_comment_post = event => {
+  const actionElement = event.target.closest('.action');
+  const dados = JSON.parse(actionElement.dataset.postComment);
+
+  // const url = `/posts/${dados.post_id}/comments/${dados.id}`;
+  const url = `/comment_update/${dados.id}`
+  const options = {
+    method: 'PATCH',
+    headers,
+    body: JSON.stringify({comment: {published: dados.published }})
+  }
+
+  connection(url, options)
 }
