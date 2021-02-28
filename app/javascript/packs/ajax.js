@@ -20,12 +20,28 @@ document.addEventListener('DOMContentLoaded', ()=> {
 });
 
 const requested_friend = event => {
-  console.log('acionado com sucesso!!!')
+  const actionElement = event.target.closest('.action');
+
+  fetch("/friends", {
+    method: 'POST',
+    headers,
+    body: JSON.stringify({friend: { friend: actionElement.dataset.socialId } })
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    actionElement.innerHTML = ''
+    actionElement.innerHTML = aguardar();
+  })
+  .catch(errors => console.log('erro: ' + errors))
+
 }
 
 const updated_friend = event => {
   const actionElement = event.target.closest('.action');
   const dados = JSON.parse(actionElement.dataset.socialId);
+
+  const linhaSocial = document.querySelector(`.social-${dados.id}`)
   const url = `/friends/${dados.id}`;
   const options = {
     method: 'PATCH',
@@ -66,4 +82,14 @@ const updated_comment = event => {
     linhaVideo.style.display = 'none'
   }
 
+}
+
+const aguardar = ()=>{
+  const btn = `
+    <div class= 'btn_aguardando'>
+      <i class='fas fa-retweet'></i>
+      pendente...
+    </div>
+  `
+  return btn;
 }
