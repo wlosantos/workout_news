@@ -154,8 +154,9 @@
                   %td #{ friend.requested_by.username }
                   - if friend.status == 'pending'
                     %td
-                      = link_to '#', class: 'is-link' do
-                        %i.fas.fa-lock
+                      .action{data:{social:{id: "#{updated_friend(friend.id, 'accepted')}"}}}
+                        .btn_social
+                          %i.fas.fa-lock
                   - else
                     %td
                       = link_to '#', class: 'is-link' do

@@ -3,14 +3,42 @@ const headers = { "Content-Type": "application/json", "X-CSRF-Token": token };
 
 
 document.addEventListener('DOMContentLoaded', ()=>{
+
   document.querySelectorAll(".action > .btn_solicitar").forEach(button => {
     button.addEventListener('click', solicitar);
   });
+
+  document.querySelectorAll('.action > .btn_social').forEach(button => {
+    button.addEventListener('click', friend_accepted);
+  })
 });
+
+const friend_accepted = event => {
+  console.log('amigo aceito...');
+}
+
+const solicitar = event => {
+
+  const actionElement = event.target.closest('.action');
+  const url = '/friends';
+  const options = {
+    method: 'POST',
+    headers,
+    body: JSON.stringify({ friend: { friend: { actionElement.dataset.socialId } } })
+  }
+
+  connection(url, options)
+}
+
+const conection = (url, options)=>{
+  fetch(url, options)
+  .then(response => response.json)
+  .then(data => console.log(data))
+  .catch(errors => console.log(`ERROR(s) ${errors}`))
+}
 
 function solicitar(event){
   const actionElement = event.target.closest(".action");
-  const elem = actionElement.dataset.socialId;
 
   fetch("/friends", {
     method: 'POST',
@@ -34,4 +62,21 @@ const aguardar = ()=>{
     </div>
   `
   return btn;
+}
+
+function accept_friend(event){
+  const actionElement = event.target.closest(".action");
+
+  const id = actionElement.dataset.socialId
+
+  fetch("/send_friend", {
+    method: 'PATCH',
+    headers
+    // body: JSON.stringify({friend: {id: 1, friend: 1, status: 'accepted' } })
+  })
+  .then(response => console.log(response))
+  .then(data => {
+    console.log(data);
+  })
+  .catch(errors => console.log('erro: ' + errors))
 }

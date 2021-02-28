@@ -18,6 +18,6 @@ Rails.application.routes.draw do
     resources :comments, module: :posts
   end
 
-  resources :friends, only: %i[ create update destroy ]
+  resources :friends, only: %i[ create update ]
 
 end
