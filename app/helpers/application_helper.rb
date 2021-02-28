@@ -39,8 +39,8 @@ module ApplicationHelper
     {id: id, status: status}.to_json
   end
 
-  def update_comment_post(postid, commentid, published)
-    {id: commentid, post_id: postid , published: published}.to_json
+  def update_comment_post(commentid, published, origem)
+    {id: commentid, published: published, origem: origem}.to_json
   end
 
 end

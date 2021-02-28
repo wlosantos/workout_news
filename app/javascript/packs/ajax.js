@@ -4,6 +4,7 @@ const headers = { "Content-Type": "application/json", "X-CSRF-Token": token };
 
 
 document.addEventListener('DOMContentLoaded', ()=> {
+
   document.querySelectorAll('.action .btn_solicitar').forEach(button => {
     button.addEventListener('click', requested_friend);
   });
@@ -13,7 +14,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
   });
 
   document.querySelectorAll('.action .btn_comment_post').forEach(button => {
-    button.addEventListener('click', updated_comment_post);
+    button.addEventListener('click', updated_comment);
   });
 
 });
@@ -43,11 +44,12 @@ const connection = (url, options) => {
   .catch(errors => console.log('ERROR: ' + errors))
 }
 
-const updated_comment_post = event => {
+const updated_comment = event => {
   const actionElement = event.target.closest('.action');
   const dados = JSON.parse(actionElement.dataset.postComment);
+  const txtPost  = document.querySelector('#postComment');
+  const txtVideo = document.querySelector('#streamingComment')
 
-  // const url = `/posts/${dados.post_id}/comments/${dados.id}`;
   const url = `/comment_update/${dados.id}`
   const options = {
     method: 'PATCH',
@@ -56,4 +58,5 @@ const updated_comment_post = event => {
   }
 
   connection(url, options)
+
 }

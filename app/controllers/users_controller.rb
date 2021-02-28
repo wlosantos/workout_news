@@ -13,6 +13,11 @@ class UsersController < ApplicationController
     if current_user.kind == 'user'
       render 'post/index'
     end
+
+    @posts = current_user.posts.all
+    @streamings = current_user.streamings.all
+    @comment_posts = @posts.where(published: :pending)
+    @comment_streamings = @streamings.where(published: :pending)
   end
 
   def update
