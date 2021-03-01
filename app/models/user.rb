@@ -31,6 +31,8 @@ class User < ApplicationRecord
     friends.where(friend: amigo, status: 'accepted').exists?
   end
 
+  
+
   private
 
 
