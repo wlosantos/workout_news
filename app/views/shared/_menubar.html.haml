@@ -18,7 +18,7 @@
           %i.far.fa-file-video.mr-2
           Videos
       .navbar-end
-        -if user_signed_in? && current_user.kind == 'admin'
+        -if user_signed_in? && (current_user.kind == 'admin' || current_user.kind == 'manager')
           = link_to '#', class: 'navbar-item' do
             .social_count.px-2
               %i.fas.fa-comment
@@ -35,9 +35,9 @@
               = current_user.username
             .navbar-dropdown.is-right
               -if current_user.kind == 'manager'
-                = link_to '#', class: 'navbar-item' do
+                = link_to rails_admin_path, class: 'navbar-item' do
                   %i.fas.fa-user-lock.mr-2
-                  Administration
+                  Administração
               = link_to adm_profile_path, class: 'navbar-item' do
                 %i.fas.fa-list.mr-2
                 Profiles

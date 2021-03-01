@@ -5,6 +5,6 @@ FactoryBot.define do
     published { [:pending, :published].sample }
     tag_list { Faker::Lorem.word }
     contrast { 0 }
-    created_by { User.first }
+    created_by { User.all.sample }
   end
 end

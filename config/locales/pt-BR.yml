@@ -1,9 +1,15 @@
 'pt-BR':
   activerecord:
     model:
-      user: 'Usuário'
-      comment: 'Comentário'
-      streaming: 'Video'
+      user:
+        one: 'Usuário'
+        other: 'Usuários'
+      comment:
+        one: 'Comentário'
+        other: 'Comentários'
+      streaming:
+        one: 'Video'
+        other: 'Vídeos'
 
     attributes:
       default: &default
