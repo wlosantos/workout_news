@@ -13,7 +13,7 @@
 
   %body{:data => {:flash => {:messages => "#{JSON.dump(flash.to_a)}"}}}
     = render 'shared/menubar'
-    %section
+    %section{style: 'min-height: 800px'}
       .container
         = yield
 

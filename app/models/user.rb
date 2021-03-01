@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :comments, foreign_key: :created_by_id, dependent: :destroy
   has_one_attached :avatar
 
-  enum kind: [:user, :admin, :maneger]
+  enum kind: [:user, :admin, :manager]
   enum status: [:active, :inactive]
 
   validates :name, presence: true
@@ -30,6 +30,8 @@ class User < ApplicationRecord
   def friend_confirm?(amigo)
     friends.where(friend: amigo, status: 'accepted').exists?
   end
+
+  
 
   private
 

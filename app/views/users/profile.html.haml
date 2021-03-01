@@ -45,7 +45,7 @@
                 - @posts.each do |post|
                   %tr
                     %td{align: 'right'} #{ post.id }
-                    %td #{ post.title }
+                    %td= link_to post.title, post
                     %td #{ truncate(strip_tags(post.body.to_s), length: 45) }
                     %td{align: 'center'} #{ post.comments.count }
                     %td #{ post.published }
@@ -71,7 +71,7 @@
                 - @streamings.each do |streaming|
                   %tr
                     %td{align: 'right'} #{ streaming.id }
-                    %td #{ streaming.title }
+                    %td= link_to streaming.title, streaming
                     %td #{ truncate(strip_tags(streaming.description.to_s), length: 45) }
                     %td
                     %td #{ streaming.published }

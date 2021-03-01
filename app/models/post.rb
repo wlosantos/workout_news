@@ -1,5 +1,8 @@
 class Post < ApplicationRecord
 
+  extend FriendlyId
+  friendly_id :title, use: [:slugged, :history, :finders]
+
   belongs_to :created_by, class_name: 'User'
   has_many :comments, as: :commentable
 
@@ -22,6 +25,10 @@ class Post < ApplicationRecord
 
   def total_comments?
     self.list_comments_pending.any?
+  end
+
+  def should_generate_new_friendly_id?
+    title_changed?
   end
 
 end

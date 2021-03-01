@@ -3,6 +3,10 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.i18n.enforce_available_locales = false
+  config.i18n.available_locales = ["pt-BR", :es, :en]
+  config.i18n.default_locale = 'pt-BR'
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 

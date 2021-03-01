@@ -14,6 +14,10 @@ gem 'haml-rails'
 gem 'devise'
 gem 'devise-i18n', '~> 1.9', '>= 1.9.2'
 gem 'rails-i18n'
+gem 'rails_admin'
+gem 'cancancan'
+gem 'rails_admin-i18n'
+gem 'friendly_id', '~> 5.4', '>= 5.4.2'
 
 gem "acts-as-taggable-on", "~> 7.0"
 # gem "active_storage_validations", "~> 0.9.2"
